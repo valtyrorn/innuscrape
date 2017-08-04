@@ -1,5 +1,5 @@
 ## Innuscrape
-<p style="text-align:center;">![Icon](squid.png)</p>
+<img src="squid.png" alt="icon" style="text-align:center;" />
 Scraper fyrir stundatöflur á innu
 
 Notast við pipenv
