@@ -1,0 +1,86 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "90918374ef3779416e6b6b660c4811767f2cd089cf59e3dc580bf2971b2e4bfd"
+        },
+        "requires": {},
+        "sources": [
+            {
+                "url": "https://pypi.python.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "backports.shutil-get-terminal-size": {
+            "version": "==1.0.0"
+        },
+        "certifi": {
+            "version": "==2017.7.27.1"
+        },
+        "chardet": {
+            "version": "==3.0.4"
+        },
+        "decorator": {
+            "version": "==4.1.2"
+        },
+        "enum34": {
+            "version": "==1.1.6"
+        },
+        "idna": {
+            "version": "==2.5"
+        },
+        "ipython": {
+            "version": "==5.4.1"
+        },
+        "ipython-genutils": {
+            "version": "==0.2.0"
+        },
+        "lxml": {
+            "version": "==3.8.0"
+        },
+        "pathlib2": {
+            "version": "==2.3.0"
+        },
+        "pexpect": {
+            "version": "==4.2.1"
+        },
+        "pickleshare": {
+            "version": "==0.7.4"
+        },
+        "prompt-toolkit": {
+            "version": "==1.0.15"
+        },
+        "ptyprocess": {
+            "version": "==0.5.2"
+        },
+        "pygments": {
+            "version": "==2.2.0"
+        },
+        "requests": {
+            "version": "==2.18.3"
+        },
+        "scandir": {
+            "version": "==1.5"
+        },
+        "setuptools": {
+            "version": "==36.2.7"
+        },
+        "simplegeneric": {
+            "version": "==0.8.1"
+        },
+        "six": {
+            "version": "==1.10.0"
+        },
+        "traitlets": {
+            "version": "==4.3.2"
+        },
+        "urllib3": {
+            "version": "==1.22"
+        },
+        "wcwidth": {
+            "version": "==0.1.7"
+        }
+    },
+    "develop": {}
+}
