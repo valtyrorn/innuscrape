@@ -4,7 +4,7 @@
 Einföld leið til að sækja stundartöflur í JSON formi af Innu sem ætti að virka fyrir alla framhaldsskóla á Íslandi. Skrifað til notkunar í [ögn](http://ogn.is)
 
 ### Uppsetningarleiðbeiningar
-```shell
+```Shell
 pip install pipenv
 pipenv shell
 pipenv install
