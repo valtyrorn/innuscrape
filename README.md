@@ -1,10 +1,10 @@
 <p align="center"><img src="owl.png" width=80 alt="Icon"/></p>
 <h2 align="center">Innuscrape</h2>
 
-Einföld leið til að sækja stundartöflur í JSON formi af Innu.
+Einföld leið til að sækja stundartöflur í JSON formi af Innu sem ætti að virka fyrir alla framhaldsskóla á Íslandi. Skrifað til notkunar í [ögn](http://ogn.is)
 
 ### Uppsetningarleiðbeiningar
-```
+```shell
 pip install pipenv
 pipenv shell
 pipenv install
