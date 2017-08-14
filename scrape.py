@@ -3,7 +3,7 @@
 from lxml import html
 import requests
 import json
-import maya
+import arrow
 
 def truue(tree, xpath, q):
     if len(tree.xpath(xpath)) != 0:
@@ -39,16 +39,23 @@ def scrape_schedule(ssn, pwd):
     resp = s.get('https://nam.inna.is/api/UserData/GetLoggedInUser')
     user_data = json.loads(resp.content)
     student_id = user_data['studentId']
+    week = arrow.utcnow().span('week')
+    monday = week[0].format('DD.MM.YYYY')
+    sunday = week[1].format('DD.MM.YYYY')
 
     # STEP 5 --- Get schedule
-    monday = maya.when('monday')
-    sunday = maya.when('sunday')
-
     params = {
         'student_id': student_id,
-        'date_from': '04.09.2017',
-        'date_to': '10.09.2017'
+        'date_from': monday,
+        'date_to': sunday,
+        'attendanceOverview': '0',
+        'class_id': '',
+        'classroom_id': '',
+        'groupId': '',
+        'moduleId': '',
+        'staff_id': '',
+        'terms': ''
     }
     resp = s.get('https://nam.inna.is/api/Timetable/GetTimetable', params=params)
-    return resp
+    return json.loads(resp.content)
 

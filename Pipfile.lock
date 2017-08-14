@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "90918374ef3779416e6b6b660c4811767f2cd089cf59e3dc580bf2971b2e4bfd"
+            "sha256": "e4b14821026c572a1b75c1ae3df5a1b9e006cc9f8d06e68349444b0d13e0df1d"
         },
         "requires": {},
         "sources": [
@@ -12,6 +12,9 @@
         ]
     },
     "default": {
+        "arrow": {
+            "version": "==0.10.0"
+        },
         "backports.shutil-get-terminal-size": {
             "version": "==1.0.0"
         },
@@ -56,6 +59,9 @@
         },
         "pygments": {
             "version": "==2.2.0"
+        },
+        "python-dateutil": {
+            "version": "==2.6.1"
         },
         "requests": {
             "version": "==2.18.3"
