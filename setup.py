@@ -10,5 +10,6 @@ setup(
     download_url = 'https://github.com/valtyrorn/innuscrape/archive/master.zip',
     keywords = ['inna', 'scrape'],
     classifiers = [],
+    install_requires = ['lxml','arrow','requests'],
 )
  
