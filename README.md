@@ -3,6 +3,18 @@
 
 Einföld leið til að sækja stundartöflur í JSON formi af Innu sem ætti að virka fyrir alla framhaldsskóla á Íslandi. Skrifað til notkunar í [ögn](http://ogn.is).
 
+### Notaðu innuscrape í eigin verkefni
+Til að setja innuscrape upp í eigin verkefni notarðu eftirfarandi skipanir.
+Ef þú notar pip:
+```Shell
+pip install -e git://github.com/valtyr/innuscrape.git#egg=innuscrape
+```
+
+Ef þú notar pipenv:
+```Shell
+pipenv git://github.com/valtyr/innuscrape.git
+```
+
 ### Uppsetningarleiðbeiningar
 Verkefnið notast við pipenv frá Kenneth Rietz og er því einfalt í uppsetningu:
 ```Shell
