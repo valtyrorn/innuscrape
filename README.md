@@ -7,26 +7,27 @@ Einföld leið til að sækja stundartöflur í JSON formi af Innu sem ætti að
 Til að setja innuscrape upp í eigin verkefni notarðu eftirfarandi skipanir.
 Ef þú notar pip:
 ```Shell
-pip install -e git://github.com/valtyr/innuscrape.git#egg=innuscrape
+pip install -e git+git://github.com/valtyr/innuscrape.git#egg=innuscrape
 ```
 
 Ef þú notar pipenv:
 ```Shell
-pipenv git://github.com/valtyr/innuscrape.git
+pipenv install git+git://github.com/valtyr/innuscrape.git#egg=innuscrape
+```
+
+Eftir það geturðu notað skraparann í þínum eigin kóða:
+```Python
+import innuscrape
+schedule = innuscrape.scrape_schedule('[KENNITALA HÉR]', '[LYKILORÐ HÉR]')
+# ...nota stundatöfluna
 ```
 
 ### Uppsetningarleiðbeiningar
-Verkefnið notast við pipenv frá Kenneth Rietz og er því einfalt í uppsetningu:
+Þetta eru leiðbeiningar fyrir þá sem hafa áhuga á að vinna í verkefninu. Verkefnið notast við pipenv frá Kenneth Rietz og er því einfalt í uppsetningu:
 ```Shell
 pip install pipenv
 pipenv shell
 pipenv install
-```
-Eftir það geturðu notað skraparann í þínum eigin kóða:
-```Python
-from scrape import scrape_schedule
-schedule = scrape_schedule('[KENNITALA HÉR]', '[LYKILORÐ HÉR]')
-# ...nota stundatöfluna
 ```
 
 ### To do:
