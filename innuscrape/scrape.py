@@ -5,35 +5,42 @@ import requests
 import json
 import arrow
 
+
+class InnuException(Exception):
+    def __init__(self, value):
+        self.message = value
+
+    def __str__(self):
+        return repr(self.message)
+
+
 def truue(tree, xpath, q):
     if len(tree.xpath(xpath)) != 0:
         return tree.xpath(xpath)[0] == q
     return False
 
+
 def scrape_schedule(ssn, pwd):
     s = requests.Session()
 
-    # STEP 1 --- Fetch CSRF token
-    resp = s.get('https://nam.inna.is/auth/login')
-    tree = html.fromstring(resp.content)
+    # STEP 1 --- Send login request to Inna
+    resp = s.post(
+        'https://r.inna.is/auth/login',
+        json={'username': ssn, 'password': pwd})
+    data = resp.json()
+    if (resp.status_code is not 200):
+        raise InnuException(data['message'])
 
-    csrf_input = tree.xpath('/html/body/div/div/div/div/div/form/div[3]/input')[0]
-    if csrf_input is None:
-        raise Exception('No csrf input element')
-    else:
-        csrf_token = csrf_input.value
+    s.headers.update({'Authorization': 'Bearer {}'.format(data['token'])})
 
-    # STEP 2 --- Send login request to Inna
-    resp = s.post('https://nam.inna.is/auth/login', data={'kennitala':ssn, 'password': pwd, 'CSRF_TOKEN': csrf_token})
-    tree = html.fromstring(resp.content)
-    if truue(tree, '/html/body/div/div/div/div/div/h2/text()', u'Breyta lykilorði'):
-        # need to handle gracefully
-        raise Exception('You need to change your password')
-    login_link = tree.xpath('/html/body/div[2]/div/table/tbody/tr[1]/td[2]/a')[0].attrib['href']
-    login_link = 'https://nam.inna.is{}'.format(login_link)
+    # STEP X --- Get login list
+    resp = s.get('https://r.inna.is/auth/access?callback_url=&callback_system=')
+    data = resp.json()
 
-    # STEP 3 --- Select new inna
-    resp = s.get(login_link)
+    # STEP X --- Select new inna
+    resp = s.post('https://r.inna.is/auth/system?i=0&system=1&user_id={}&status=1'.format(data[0]['user_id']))
+    data = resp.json()
+    resp = s.get(data['url'])
 
     # STEP 4 --- Get user
     resp = s.get('https://nam.inna.is/api/UserData/GetLoggedInUser')
@@ -58,4 +65,3 @@ def scrape_schedule(ssn, pwd):
     }
     resp = s.get('https://nam.inna.is/api/Timetable/GetTimetable', params=params)
     return json.loads(resp.content)
-
